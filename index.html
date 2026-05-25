@@ -1863,6 +1863,10 @@ function _lbKey(e){if(e.key==='Escape') closeLightbox();}
     overlay.style.opacity='0';
     setTimeout(()=>{try{overlay.remove();}catch(e){}},350);
   };
+  /* Failsafe: force-skip หลัง 5 วินาที */
+  setTimeout(function(){
+    try{if(document.getElementById('bigbang-overlay')) window.skipBigBang();}catch(e){}
+  },5000);
 })();
 
 loadProgress();
