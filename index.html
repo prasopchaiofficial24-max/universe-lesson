@@ -149,7 +149,7 @@ const CHAPTERS = [
     {
       type:'lesson',badge:'b-blue',badgeText:'แนวคิดพื้นฐาน',
       title:'เอกภพเริ่มต้นอย่างไร?',
-      image:'images/bigbang.jpg',imagePH:'📷 ภาพจำลองบิกแบง (800×400px)',
+      image:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/WMAP_2010.png/640px-WMAP_2010.png',imagePH:'📷 ภาพจำลองบิกแบง',
       narration:'ลองนึกภาพนะครับ — ทุกสิ่งที่เราเห็นในท้องฟ้า เริ่มต้นจากจุดเล็กกว่าอะตอมเมื่อ 13,800 ล้านปีก่อน',
       text:'เอกภพเริ่มต้นจากเหตุการณ์ที่เรียกว่า <strong>บิกแบง</strong> เมื่อประมาณ <strong>13,800 ล้านปีก่อน</strong> จากจุดที่มีขนาดเล็กอนันต์ อุณหภูมิสูงอนันต์ และความหนาแน่นสูงอนันต์',
       highlight:'บิกแบงไม่ใช่การระเบิดในอวกาศ — แต่คืออวกาศขยายตัวออกมาพร้อมกันทุกทิศทาง เวลาและอวกาศเริ่มต้นขึ้นพร้อมกัน',
@@ -184,7 +184,7 @@ const CHAPTERS = [
     {
       type:'lesson',badge:'b-blue',badgeText:'เนื้อหาลึก',
       title:'สสาร ปฏิยานุภาค และการขยายตัว',
-      image:'images/antimatter.png',imagePH:'📷 ภาพ Matter vs Antimatter (800×400px)',
+      image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Animated_antimatter_and_matter_explosion.gif/320px-Animated_antimatter_and_matter_explosion.gif',imagePH:'📷 ภาพ Matter vs Antimatter',
       narration:'คำถามน่าคิดมากครับ — ถ้าบิกแบงสร้างสสารและปฏิยานุภาคเท่ากัน ทำไมเราถึงยังมีอยู่?',
       text:'บิกแบงสร้างสสารและปฏิยานุภาคเกือบเท่ากัน เมื่อชนกันจะหายไปเป็นพลังงาน แต่มีสสารเกินมา <strong>1 ใน 1,000,000,000</strong> — สสารส่วนนั้นคือทุกสิ่งที่เราเห็นในปัจจุบัน',
       highlight:'เอกภพขยายตัวต่อเนื่อง → อุณหภูมิลดลง → สสารรวมตัวเป็นโครงสร้างที่ซับซ้อนขึ้น ปัจจุบันเอกภพมีอุณหภูมิเฉลี่ย 2.7 K',
@@ -211,7 +211,7 @@ const CHAPTERS = [
     {
       type:'lesson',badge:'b-teal',badgeText:'หลักฐานข้อ 1',
       title:'กฎของฮับเบิลและ Redshift',
-      image:'images/hubble.jpg',imagePH:'📷 กราฟ Hubble\'s Law (800×400px)',
+      image:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Redshift_blueshift.svg/640px-Redshift_blueshift.svg.png',imagePH:'📷 กราฟ Hubble\'s Law',
       narration:'นี่คือการค้นพบที่เปลี่ยนโลกของผมเองครับ — ปี 1929 ผมพบว่ากาแล็กซีทุกแห่งกำลังถอยห่าง',
       text:'Edwin Hubble (1929) ค้นพบว่ากาแล็กซีทุกแห่งกำลังเคลื่อนออกห่าง และยิ่งอยู่ไกลก็ยิ่งเคลื่อนเร็ว: <strong>v = H₀ × d</strong>',
       highlight:'Redshift — แสงจากกาแล็กซีที่ถอยห่างมีความยาวคลื่นยืดออกไปทางสีแดง ยืนยันว่าเอกภพกำลังขยายตัวอย่างต่อเนื่อง',
@@ -237,7 +237,7 @@ const CHAPTERS = [
     {
       type:'lesson',badge:'b-teal',badgeText:'หลักฐานข้อ 3',
       title:'สัดส่วน H:He = 75:25',
-      image:'images/elements.jpg',imagePH:'📷 Pie chart H 75% He 25% (800×400px)',
+      image:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Nucleosynthesis_periodic_table.svg/640px-Nucleosynthesis_periodic_table.svg.png',imagePH:'📷 ธาตุในเอกภพยุคแรก',
       narration:'ทฤษฎีที่ดีต้องทำนายก่อน แล้วตรวจสอบได้ภายหลัง — บิกแบงทำได้ครับ',
       text:'ทฤษฎีบิกแบงทำนายว่าใน 3 นาทีแรก เอกภพควรมี H <strong>75%</strong> และ He <strong>25%</strong> โดยมวล เมื่อวัดจริงในกาแล็กซียุคแรก ได้ตรงกันทุกประการ',
       highlight:'ถ้าเอกภพไม่ได้เริ่มจากบิกแบง สัดส่วนนี้จะต่างออกไปมาก นี่คือหลักฐานที่ทรงพลังที่สุดข้อหนึ่ง',
@@ -331,7 +331,7 @@ const CHAPTERS = [
 let S = {
   phase:'register',   // register|welcome|pretest|lesson|posttest|summary
   ch:0, node:0,
-  xp:0, lives:3,
+  xp:0, lives:5,
   preAns:[], postAns:[],
   quizAns:{}, matchSt:{}, sortSt:{}, scrambleSt:{}, dragFillSt:{},
   chCorrect:[0,0,0], chTotal:[0,0,0],
@@ -592,13 +592,13 @@ function renderTest(mode){
         <div class="quiz-opts">
           ${q.opts.map((o,oi)=>{
             let cls='';
-            if(done){cls=oi===q.ans?'correct disabled':oi===picked&&!ok?'wrong disabled':'disabled';}
+            if(done){if(mode==='post'){cls=oi===q.ans?'correct disabled':oi===picked&&!ok?'wrong disabled':'disabled';}else{cls=oi===picked?'picked disabled':'disabled';}}
             return `<button class="qopt ${cls}" data-qi="${qi}" data-oi="${oi}" onclick="answerTest('${mode}',${qi},${oi})">
               <span class="qletter">${String.fromCharCode(65+oi)}</span>${o}
             </button>`;
           }).join('')}
         </div>
-        ${done?`<div class="qfb show ${ok?'fb-ok':'fb-bad'}">${ok?'✅ ถูกต้อง!'+(q.fb?'<br><span style="font-size:12px;opacity:.85;">💡 '+q.fb+'</span>':''):'❌ ไม่ถูกต้อง — คำตอบที่ถูกคือ: <strong>'+q.opts[q.ans]+'</strong>'+(q.fb?'<br><span style="font-size:12px;opacity:.85;display:block;margin-top:4px;">💡 '+q.fb+'</span>':'')}</div>`:''}
+        ${done && mode==='post'?`<div class="qfb show ${ok?'fb-ok':'fb-bad'}">${ok?'✅ ถูกต้อง!'+(q.fb?'<br><span style="font-size:12px;opacity:.85;">💡 '+q.fb+'</span>':''):'❌ ไม่ถูกต้อง — คำตอบที่ถูกคือ: <strong>'+q.opts[q.ans]+'</strong>'+(q.fb?'<br><span style="font-size:12px;opacity:.85;display:block;margin-top:4px;">💡 '+q.fb+'</span>':'')}</div>`:''}
       </div>
     </div>`;
   }).join('')}`;
@@ -620,17 +620,23 @@ function answerTest(mode,qi,oi){
     card.querySelectorAll('.qopt').forEach(function(btn){
       const boi=parseInt(btn.dataset.oi);
       btn.classList.add('disabled');
-      if(boi===qs[qi].ans) btn.classList.add('correct');
-      else if(boi===oi && !ok) btn.classList.add('wrong');
+      if(mode==='post'){
+        if(boi===qs[qi].ans) btn.classList.add('correct');
+        else if(boi===oi && !ok) btn.classList.add('wrong');
+      } else {
+        if(boi===oi) btn.classList.add('picked');
+      }
     });
-    /* ใส่ feedback */
-    const fb=document.createElement('div');
-    const q=qs[qi];
-    fb.className='qfb show '+(ok?'fb-ok':'fb-bad');
-    fb.innerHTML=ok
-      ?'✅ ถูกต้อง!'+(q.fb?'<br><span style="font-size:12px;opacity:.85;">💡 '+q.fb+'</span>':'')
-      :'❌ ไม่ถูกต้อง — คำตอบที่ถูกคือ: <strong>'+q.opts[q.ans]+'</strong>'+(q.fb?'<br><span style="font-size:12px;opacity:.85;display:block;margin-top:4px;">💡 '+q.fb+'</span>':'');
-    card.querySelector('.card-body').appendChild(fb);
+    /* ใส่ feedback เฉพาะ post-test */
+    if(mode==='post'){
+      const fb=document.createElement('div');
+      const q=qs[qi];
+      fb.className='qfb show '+(ok?'fb-ok':'fb-bad');
+      fb.innerHTML=ok
+        ?'✅ ถูกต้อง!'+(q.fb?'<br><span style="font-size:12px;opacity:.85;">💡 '+q.fb+'</span>':'')
+        :'❌ ไม่ถูกต้อง — คำตอบที่ถูกคือ: <strong>'+q.opts[q.ans]+'</strong>'+(q.fb?'<br><span style="font-size:12px;opacity:.85;display:block;margin-top:4px;">💡 '+q.fb+'</span>':'');
+      card.querySelector('.card-body').appendChild(fb);
+    }
   } else {
     render(); /* fallback */
   }
@@ -773,7 +779,7 @@ function renderQuizMid(n){
         <div class="quiz-opts">
           ${q.opts.map((o,oi)=>{
             let cls='';
-            if(done){cls=oi===q.ans?'correct disabled':oi===picked&&!ok?'wrong disabled':'disabled';}
+            if(done){if(mode==='post'){cls=oi===q.ans?'correct disabled':oi===picked&&!ok?'wrong disabled':'disabled';}else{cls=oi===picked?'picked disabled':'disabled';}}
             return `<button class="qopt ${cls}" onclick="answerMid(${qi},${oi})">
               <span class="qletter">${String.fromCharCode(65+oi)}</span>${o}
             </button>`;
@@ -889,24 +895,62 @@ function initSort(){
   const list=document.getElementById('sort-list');
   if(!list) return;
   let dragged=null;
+
+  function commitDrop(target){
+    if(!dragged||dragged===target) return;
+    const items=[...list.querySelectorAll('.si')];
+    const fi=items.indexOf(dragged),ti=items.indexOf(target);
+    if(fi<ti) list.insertBefore(dragged,target.nextSibling);
+    else list.insertBefore(dragged,target);
+    const k=`${S.ch}-${S.node}`;
+    S.sortSt[k].order=[...list.querySelectorAll('.si')].map(el=>el.dataset.id);
+    S.sortSt[k].checked=false;
+    list.querySelectorAll('.si').forEach((el,i)=>el.querySelector('.si-num').textContent=i+1);
+  }
+
   list.querySelectorAll('.si').forEach(item=>{
+    /* ── Desktop mouse drag ── */
+    item.setAttribute('draggable','true');
     item.addEventListener('dragstart',()=>{dragged=item;item.classList.add('dragging');});
-    item.addEventListener('dragend',()=>item.classList.remove('dragging'));
+    item.addEventListener('dragend',()=>{item.classList.remove('dragging');dragged=null;});
     item.addEventListener('dragover',e=>{e.preventDefault();item.classList.add('over');});
     item.addEventListener('dragleave',()=>item.classList.remove('over'));
     item.addEventListener('drop',e=>{
       e.preventDefault();item.classList.remove('over');
-      if(dragged&&dragged!==item){
-        const items=[...list.querySelectorAll('.si')];
-        const fi=items.indexOf(dragged),ti=items.indexOf(item);
-        if(fi<ti) list.insertBefore(dragged,item.nextSibling);
-        else list.insertBefore(dragged,item);
-        const k=`${S.ch}-${S.node}`;
-        S.sortSt[k].order=[...list.querySelectorAll('.si')].map(el=>el.dataset.id);
-        S.sortSt[k].checked=false;
-        list.querySelectorAll('.si').forEach((el,i)=>el.querySelector('.si-num').textContent=i+1);
-      }
+      commitDrop(item);
     });
+
+    /* ── Mobile touch drag ── */
+    let ghost=null,lastOver=null;
+    item.addEventListener('touchstart',e=>{
+      dragged=item;
+      item.classList.add('dragging');
+      /* Create ghost clone that follows finger */
+      ghost=item.cloneNode(true);
+      ghost.style.cssText='position:fixed;opacity:0.75;pointer-events:none;z-index:9999;width:'+item.offsetWidth+'px;left:0;top:0;';
+      document.body.appendChild(ghost);
+    },{passive:true});
+
+    item.addEventListener('touchmove',e=>{
+      if(!dragged) return;
+      e.preventDefault();
+      const t=e.touches[0];
+      if(ghost){ghost.style.left=(t.clientX-item.offsetWidth/2)+'px';ghost.style.top=(t.clientY-30)+'px';}
+      /* Find element under finger (hide ghost first) */
+      if(ghost) ghost.style.display='none';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      if(ghost) ghost.style.display='';
+      const target=el&&el.closest('.si');
+      if(lastOver&&lastOver!==target) lastOver.classList.remove('over');
+      if(target&&target!==dragged){target.classList.add('over');lastOver=target;}
+    },{passive:false});
+
+    item.addEventListener('touchend',e=>{
+      item.classList.remove('dragging');
+      if(ghost){ghost.remove();ghost=null;}
+      if(lastOver){lastOver.classList.remove('over');commitDrop(lastOver);lastOver=null;}
+      dragged=null;
+    },{passive:true});
   });
 }
 
@@ -1835,48 +1879,4 @@ function showGameOver(){
       <div class="go-title">หัวใจหมดแล้ว!</div>
       <div class="go-sub">ไม่ต้องห่วงนะ ลองอีกครั้ง เธอจะเข้าใจมากขึ้น ✨</div>
       <div class="modal-actions">
-        <button class="btn ghost btn--block" onclick="restartAfterGameOver()">🔄 เริ่มใหม่</button>
-        <button class="btn primary btn--block" onclick="continueAfterGameOver()">❤️ เล่นต่อ</button>
-      </div>
-      <p style="font-size:11px;color:var(--text-4);margin-top:14px;letter-spacing:.04em;">เล่นต่อจะเติมหัวใจ 1 ดวง</p>
-    </div>`;
-    document.body.appendChild(modal);
-  }
-  modal.classList.add('open'); modal.style.display='flex';
-}
-function continueAfterGameOver(){
-  document.getElementById('gameover-modal').style.display='none'; document.getElementById('gameover-modal').classList.remove('open');
-  S.lives=1; // give 1 life back to continue
-  render(true);
-}
-function restartAfterGameOver(){
-  document.getElementById('gameover-modal').style.display='none'; document.getElementById('gameover-modal').classList.remove('open');
-  restart();
-}
-
-/* ── TWINKLE STARS ── */
-(function spawnTwinkleStars(){
-  const stars=[
-    {x:'6%',  y:'20%', s:2.5, dur:2.8, delay:0.2},
-    {x:'18%', y:'75%', s:2,   dur:3.5, delay:0.9},
-    {x:'32%', y:'10%', s:1.5, dur:4.1, delay:1.6},
-    {x:'48%', y:'55%', s:3,   dur:2.5, delay:0.4},
-    {x:'62%', y:'30%', s:1.5, dur:5.0, delay:2.1},
-    {x:'75%', y:'85%', s:2,   dur:3.2, delay:0.7},
-    {x:'85%', y:'15%', s:2.5, dur:2.9, delay:1.3},
-    {x:'92%', y:'60%', s:1.5, dur:4.4, delay:1.8},
-    {x:'25%', y:'45%', s:2,   dur:3.8, delay:2.5},
-    {x:'55%', y:'90%', s:2.5, dur:2.6, delay:0.6},
-    {x:'70%', y:'5%',  s:1.5, dur:4.7, delay:1.1},
-    {x:'40%', y:'70%', s:3,   dur:3.0, delay:3.0},
-  ];
-h(({x,y,s,dur,delay})=>{
-    const el=document.createElement('div');
-    el.className='twinkle-star';
-    el.style.cssText=`left:${x};top:${y};width:${s}px;height:${s}px;--dur:${dur}s;--delay:${delay}s;`;
-    document.body.appendChild(el);
-  });
-})();
-</script>
-</body>
-</html>
+       
