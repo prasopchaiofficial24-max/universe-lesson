@@ -62,11 +62,7 @@
 <!-- ═══════ PARALLAX STARFIELD ═══════ -->
 <div class="starfield-parallax" id="starfield-parallax"></div>
 
-<!-- Big Bang Opening Overlay -->
-<div id="bigbang-overlay">
-  <canvas id="bigbang-canvas"></canvas>
-  <div id="bigbang-label">BIG BANG</div>
-  <button id="bigbang-skip" onclick="skipBigBang()">ข้าม →</button>
+<button id="bigbang-skip" onclick="skipBigBang()">ข้าม →</button>
 </div>
 <!-- Confetti Canvas -->
 <canvas id="confetti-canvas"></canvas>
@@ -82,7 +78,7 @@
   <div class="topbar">
     <div class="tb-title" id="tb-title">กำเนิดเอกภพ · ว33101 ม.6</div>
     <div class="tb-chapter-tag" id="tb-chapter-tag" style="display:none;">บทที่ 1 / 3</div>
-    <div class="tb-lives" id="tb-lives">❤️❤️❤️</div>
+    <div class="tb-lives" id="tb-lives">❤️❤️❤️❤️❤️</div>
     <div class="tb-xp" id="tb-xp">0 XP</div>
     <button class="tb-teacher" id="tb-teacher" onclick="openTeacher()" title="Dashboard ครู">👩‍🏫</button>
     <button class="tb-reset" id="tb-reset" onclick="confirmReset()" title="รีเซ็ตและเริ่มใหม่">↺</button>
@@ -1304,7 +1300,7 @@ function renderSummary(){
 function restart(){
   const stu=S.student||{name:'',cls:'',date:''};
   localStorage.removeItem('ulp_v3');
-  S={phase:'welcome',ch:0,node:0,xp:0,lives:3,preAns:[],postAns:[],quizAns:{},matchSt:{},sortSt:{},scrambleSt:{},dragFillSt:{},chCorrect:[0,0,0],chTotal:[0,0,0],totalCorrect:0,totalQ:0,scrambleIdx:{},student:stu};
+  S={phase:'welcome',ch:0,node:0,xp:0,lives:5,preAns:[],postAns:[],quizAns:{},matchSt:{},sortSt:{},scrambleSt:{},dragFillSt:{},chCorrect:[0,0,0],chTotal:[0,0,0],totalCorrect:0,totalQ:0,scrambleIdx:{},student:stu};
   window._shuffled={};window._ansSlots={};window._usedIdx={};window._selLetter={};
   render(true);
 }
@@ -1312,7 +1308,7 @@ function restart(){
 function confirmReset(){
   if(confirm('รีเซ็ตทั้งหมดและเปลี่ยนนักเรียน?\n\nProgress ทั้งหมดจะถูกลบ และต้องกรอกชื่อใหม่')){
     localStorage.removeItem('ulp_v3');
-    S={phase:'register',ch:0,node:0,xp:0,lives:3,preAns:[],postAns:[],quizAns:{},matchSt:{},sortSt:{},scrambleSt:{},dragFillSt:{},chCorrect:[0,0,0],chTotal:[0,0,0],totalCorrect:0,totalQ:0,scrambleIdx:{},student:{name:'',cls:'',date:'',avatar:'🧑‍🚀'}};
+    S={phase:'register',ch:0,node:0,xp:0,lives:5,preAns:[],postAns:[],quizAns:{},matchSt:{},sortSt:{},scrambleSt:{},dragFillSt:{},chCorrect:[0,0,0],chTotal:[0,0,0],totalCorrect:0,totalQ:0,scrambleIdx:{},student:{name:'',cls:'',date:'',avatar:'🧑‍🚀'}};
     window._shuffled={};window._ansSlots={};window._usedIdx={};window._selLetter={};
     render(true);
   }
@@ -1792,82 +1788,7 @@ function _lbKey(e){if(e.key==='Escape') closeLightbox();}
   });
 })();
 
-(function(){
-  const overlay=document.getElementById('bigbang-overlay');
-  if(!overlay) return;
-  /* ถ้ามี progress ที่บันทึกไว้ ข้ามแอนิเมชันเลย */
-  if(localStorage.getItem('ulp_v3')){overlay.remove();return;}
-  const canvas=document.getElementById('bigbang-canvas');
-  const ctx=canvas.getContext('2d');
-  let W=canvas.width=window.innerWidth, H=canvas.height=window.innerHeight;
-  const cx=W/2, cy=H/2;
-  const cols=['#6c8ef5','#a78bfa','#34d399','#f5c842','#f472b6','#fb923c','#ffffff','#60a5fa','#fde68a'];
-  const ps=[];
-  for(let i=0;i<280;i++){
-    const a=Math.random()*Math.PI*2, spd=Math.random()*10+0.5;
-    ps.push({
-      x:cx,y:cy,
-      vx:Math.cos(a)*spd,vy:Math.sin(a)*spd,
-      r:Math.random()*3+0.4,
-      c:cols[Math.floor(Math.random()*cols.length)],
-      life:1,
-      decay:Math.random()*0.007+0.003
-    });
-  }
-  const label=document.getElementById('bigbang-label');
-  let f=0,raf;
-  function draw(){
-    ctx.fillStyle='rgba(8,12,31,0.18)';
-    ctx.fillRect(0,0,W,H);
-    /* 閃光 */
-    if(f<50){
-      const prog=f/50;
-      const grd=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*0.5*prog);
-      grd.addColorStop(0,`rgba(230,210,255,${0.95*(1-prog)})`);
-      grd.addColorStop(0.35,`rgba(108,142,245,${0.55*(1-prog)})`);
-      grd.addColorStop(1,'rgba(7,9,26,0)');
-      ctx.fillStyle=grd;
-      ctx.fillRect(0,0,W,H);
-    }
-    /* particles */
-    ps.forEach(p=>{
-      if(p.life<=0) return;
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,Math.max(0.3,p.r*p.life),0,Math.PI*2);
-      ctx.fillStyle=p.c+(Math.floor(p.life*255).toString(16).padStart(2,'0'));
-      ctx.fill();
-      p.x+=p.vx; p.y+=p.vy;
-      p.vx*=0.97; p.vy*=0.97;
-      p.life-=p.decay;
-    });
-    /* fade label in then out */
-    if(label){
-      const lop=f<60?f/60:f<120?1:Math.max(0,1-(f-120)/40);
-      label.style.opacity=lop;
-    }
-    f++;
-    if(f>160){
-      const cur=parseFloat(overlay.style.opacity||'1');
-      const next=Math.max(0,cur-0.035);
-      overlay.style.opacity=next;
-      if(next<=0){overlay.remove();return;}
-    }
-    raf=requestAnimationFrame(draw);
-  }
-  ctx.fillStyle='#080c1f';
-  ctx.fillRect(0,0,W,H);
-  draw();
-  window.skipBigBang=function(){
-    cancelAnimationFrame(raf);
-    overlay.style.transition='opacity .3s';
-    overlay.style.opacity='0';
-    setTimeout(()=>{try{overlay.remove();}catch(e){}},350);
-  };
-  /* Failsafe: force-skip หลัง 5 วินาที */
-  setTimeout(function(){
-    try{if(document.getElementById('bigbang-overlay')) window.skipBigBang();}catch(e){}
-  },5000);
-})();
+
 
 loadProgress();
 render(true);
@@ -1881,6 +1802,146 @@ function showGameOver(){
     modal.innerHTML=`<div id="gameover-box">
       <span class="go-icon">💔</span>
       <div class="go-title">หัวใจหมดแล้ว!</div>
-      <div class="go-sub">ไม่ต้องห่วงนะ ลองอีกครั้ง เธอจะเข้าใจมากขึ้น ✨</div>
+      <div class="go-sub">ไม่ต้องห่วงนะครับ ลองอีกครั้ง เธอจะเข้าใจมากขึ้น ✨</div>
       <div class="modal-actions">
-       
+        <button class="btn ghost btn--block" style="flex:1" onclick="resetGame()">🔄 เริ่มใหม่</button>
+        <button class="btn primary btn--block" style="flex:1" onclick="continueGame()">💎 เล่นต่อ</button>
+      </div>
+    </div>`;
+    document.body.appendChild(modal);
+  }
+  modal.classList.add('open');
+}
+
+function continueGame(){
+  const modal=document.getElementById('gameover-modal');
+  if(modal) modal.classList.remove('open');
+  S.lives=3;
+  updateUI();
+  saveProgress();
+}
+
+function resetGame(){
+  const modal=document.getElementById('gameover-modal');
+  if(modal) modal.classList.remove('open');
+  const stu=S.student;
+  S={phase:'welcome',ch:0,node:0,xp:0,lives:5,preAns:[],postAns:[],quizAns:{},matchSt:{},sortSt:{},scrambleSt:{},dragFillSt:{},chCorrect:[0,0,0],chTotal:[0,0,0],totalCorrect:0,totalQ:0,scrambleIdx:{},student:stu};
+  saveProgress();
+  render(true);
+}
+
+function confirmReset(){
+  if(confirm('รีเซ็ตและเริ่มใหม่ทั้งหมด?')) resetGame();
+}
+
+/* ── CONFETTI ── */
+function launchConfetti(){
+  const canvas=document.getElementById('confetti-canvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  const cols=['#4f8ef7','#a78bfa','#2dd4bf','#fbbf24','#f472b6','#fb923c','#34d399'];
+  const pieces=Array.from({length:100},()=>({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height-canvas.height,
+    r:Math.random()*5+3,
+    d:Math.random()*100,
+    c:cols[Math.floor(Math.random()*cols.length)],
+    tilt:Math.floor(Math.random()*10)-10,
+    tiltAngle:0,
+    tiltAngleInc:Math.random()*0.07+0.05
+  }));
+  let angle=0,frame;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    angle+=0.01;
+    pieces.forEach(p=>{
+      p.tiltAngle+=p.tiltAngleInc;
+      p.y+=(Math.cos(angle+p.d)+2.5);
+      p.x+=Math.sin(angle)*1.5;
+      p.tilt=Math.sin(p.tiltAngle)*12;
+      ctx.beginPath();
+      ctx.lineWidth=p.r/2;
+      ctx.strokeStyle=p.c;
+      ctx.moveTo(p.x+p.tilt+p.r/4,p.y);
+      ctx.lineTo(p.x+p.tilt,p.y+p.tilt+p.r/4);
+      ctx.stroke();
+      if(p.y>canvas.height){p.y=-20;p.x=Math.random()*canvas.width;}
+    });
+    frame=requestAnimationFrame(draw);
+  }
+  draw();
+  setTimeout(()=>{cancelAnimationFrame(frame);ctx.clearRect(0,0,canvas.width,canvas.height);},3000);
+}
+
+/* ── TEACHER DASHBOARD ── */
+function openTeacher(){
+  const btn=document.getElementById('tb-teacher');
+  if(btn) btn.classList.toggle('active');
+  S._teacherOpen = !S._teacherOpen;
+  render();
+}
+
+function renderTeacherDash(){
+  const keys=Object.keys(localStorage).filter(k=>k.startsWith('ulp_v3_'));
+  if(!keys.length) return `<div class="td-empty">ยังไม่มีนักเรียนเข้าใช้งาน<br>รอนักเรียนเริ่มบทเรียนก่อนครับ 🚀</div>`;
+  return keys.map(k=>{
+    try{
+      const d=JSON.parse(localStorage.getItem(k));
+      const s=d.student||{};
+      const pct=d.totalQ>0?Math.round(d.totalCorrect/d.totalQ*100):0;
+      const col=pct>=70?'var(--teal)':pct>=50?'var(--gold)':'var(--red)';
+      return `<div class="td-card">
+        <div class="td-student">
+          <div class="td-av">${s.avatar||'🧑‍🚀'}</div>
+          <div class="td-info"><div class="td-name">${s.name||'ไม่ระบุ'}</div><div class="td-meta">ห้อง ${s.cls||'-'} | ${s.date||'-'}</div></div>
+          <div class="td-score"><div class="td-pct" style="color:${col}">${pct}%</div></div>
+          <button class="td-del" onclick="deleteStudent('${k}')">ลบ</button>
+        </div>
+        <div class="td-stats">
+          <div class="td-stat"><div class="td-stat-val">${d.xp||0}</div><div class="td-stat-label">XP</div></div>
+          <div class="td-stat"><div class="td-stat-val">${d.totalCorrect||0}/${d.totalQ||0}</div><div class="td-stat-label">ถูก/ทั้งหมด</div></div>
+          <div class="td-stat"><div class="td-stat-val">${d.lives!==undefined?d.lives:'-'}</div><div class="td-stat-label">หัวใจเหลือ</div></div>
+        </div>
+      </div>`;
+    }catch(e){return '';}
+  }).join('');
+}
+
+function deleteStudent(key){
+  if(confirm('ลบข้อมูลนักเรียนคนนี้?')){localStorage.removeItem(key);render();}
+}
+
+/* ── LIGHTBOX ── */
+function openLightbox(src,caption){
+  const img=document.getElementById('lightbox-img');
+  const cap=document.getElementById('lightbox-caption');
+  const lb=document.getElementById('lightbox');
+  if(img) img.src=src;
+  if(cap) cap.textContent=caption||'';
+  if(lb) lb.classList.add('open');
+}
+
+function closeLightbox(){
+  const lb=document.getElementById('lightbox');
+  if(lb) lb.classList.remove('open');
+}
+
+function _lbKey(e){if(e.key==='Escape') closeLightbox();}
+document.addEventListener('keydown',_lbKey);
+
+/* ── TWINKLE STARS ── */
+(function(){
+  const count=18;
+  for(let i=0;i<count;i++){
+    const star=document.createElement('div');
+    star.className='twinkle-star';
+    const size=Math.random()*2.5+1;
+    star.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${2+Math.random()*4}s;--delay:${Math.random()*5}s;`;
+    document.body.appendChild(star);
+  }
+})();
+</script>
+</body>
+</html>
